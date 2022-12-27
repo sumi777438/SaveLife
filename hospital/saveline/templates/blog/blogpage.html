@@ -1,0 +1,66 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+<style>
+    a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+
+.cardBottom_teim{
+  display: flex;
+}
+
+.cardBottom_teim img{
+  width: 25%;
+  height:100%;
+  border-radius:50%;
+}
+.cardBottom_teim text{
+
+}
+
+
+</style>
+<div class="row" id="ads">
+    <!-- Category Card -->
+     <h1 style="text-align:center;">Blog In Our Online Doctor</h1>
+    {%for blog in blogpage %}
+     <div class="col-md-3 mt-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <img class="img-fluid" src="{{blog.image.url}}" height="300" width="300"/>
+            </div>
+            <br>
+            <div class="cardBottom_teim">
+                <div class="img">
+                    <img src="{{blog.pic.url}}" alt="">
+                </div>
+                <div class="text" style="width:75%;">
+                    <p>{{blog.name}}</p>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="ad-title m-auto">
+                    <p style="color:blue;">{{blog.title}}</p>
+                    <p>{{blog.text}}</p>
+                </div>
+
+                <a class="btn btn-primary" href="{%url 'blogdetails' blog.id %}">Read More</a>
+            </div>
+        </div>
+    </div>
+{%endfor%}
+
+</div>
+
+</div>
+
+
+{%endblock%}

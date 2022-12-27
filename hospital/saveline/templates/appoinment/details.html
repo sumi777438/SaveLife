@@ -1,0 +1,55 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app img{
+    border-radius: 50%;
+}
+
+#app p{
+    padding-top: 5px;
+}
+
+</style>
+<section id="app">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <br>
+            <img src="{{detail.pic.url}}" width="250" height="250" alt="">
+            <h1>{{detail.name}}</h1>
+           <ul>
+              <li>Designation:{{detail.designation}}</li>
+              <li>Specialization Area:{{detail.specialization_area}}</li>
+              <li>Department:{{detail.department}}</li>
+              <li>Hospital:{{detail.hospital_name}}</li>
+              <li>Location:{{detail.place}}</li>
+
+            </ul>
+        </div>
+        <div class="col-lg-8">
+          <br>
+            <br>
+            <h3>Education Qualification</h3>
+            <p>{{detail.education}}</p>
+            <h3>Training Programme</h3>
+            <p>{{detail.training}}</p>
+            <h3>Research Paper published </h3>
+            <p>{{detail.research}}</p>
+            <a href="{%url 'appointment'%}"><button class="w-100 btn btn-primary btn-lg"  type="submit" >Book Appointment</button></a>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+{%endblock%}

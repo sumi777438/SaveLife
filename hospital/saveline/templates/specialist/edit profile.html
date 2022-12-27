@@ -1,0 +1,47 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Edit{% endblock%}
+{%block content%}
+
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br>
+        <h1>Edit Profile</h1>
+  <div class="form-group">
+    <label for="">Name</label>
+    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" name="name" value="{{edit.name}}" ><br>
+  </div>
+  <div class="form-group">
+    <label for="">Description</label>
+    <input type="text" class="form-control"  placeholder="Description" name="desp" value="{{edit.desp}}"><br>
+  </div>
+<div class="form-group">
+    <label for="">Experience Working Place</label>
+    <input type="text" class="form-control"  placeholder="Working Place" value="{{edit.workplace}}" name="workplace"><br>
+  </div>
+  <div class="form-group">
+    <label for="">Experience</label>
+    <input type="text" class="form-control"  placeholder="Experience" name="exprience" value="{{edit.exprience}}"><br>
+  </div>
+  <div class="form-group">
+    <label for="">Price</label>
+    <input type="number" class="form-control"placeholder="Price" name="price" value="{{edit.price}}"><br>
+  </div>
+  <div class="form-group">
+
+      {%if edit.picture%}
+      <img src="{{edit.picture.url}}" width="150px;">
+      {%endif%}
+      <label for="">Change Profile Picture</label>
+    <input type="file" class="form-control" name="picture">
+    </div>
+    <br>
+        <button  type="submit" class="btn btn-primary">Save</button>
+
+</form>
+
+</div>
+
+
+{%endblock%}

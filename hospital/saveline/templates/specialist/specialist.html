@@ -1,0 +1,99 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: 1320px auto;
+    margin: 0 auto;
+}
+
+#spacilist{
+    margin-top: 50px;
+}
+
+#spacilist .main{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+#spacilist .item{
+
+
+    margin-left: 18px;
+
+}
+
+#spacilist .item ul{
+
+    display: flex;
+
+}
+
+#spacilist .item img{
+    width: 60%;
+    margin-top: 55px;
+}
+
+#spacilist .item p{
+    padding-top: 10px 0;
+
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-weight: 700;
+
+    padding-top: 20px;
+}
+
+#spacilist .last_child{
+    margin-top: 25px;
+}
+
+
+</style>
+
+
+<section id="spacilist">
+<div class="container">
+    <div class="row">
+       <div class="main">
+    {%for sp in special%}
+        <div class="col-lg-4">
+            <div class="item border">
+                <ul>
+                    <li><a href=""><img src="{{sp.pic.url}}" alt=""></a></li>
+                    <li><a href="{%url 'food'%}"> <p>{{sp.des}}</p> </a></li>
+                </ul>
+            </div>
+        </div>
+           {%endfor%}
+       </div>
+
+    </div>
+    </div>
+</div>
+
+</section>
+
+
+
+
+
+{%endblock%}

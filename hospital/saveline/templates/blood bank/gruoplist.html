@@ -1,0 +1,56 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Registration{% endblock%}
+{%block content%}
+<style>
+  .button-value{
+ border:2px solid  #6759ff;
+ padding:0.4em 2.2em;
+ border-radius:3em;
+ background-color:transparent;
+ color:#ffffff;
+ cursor:pointer;
+ background-color:#6759ff;
+
+}
+
+</style>
+<br>
+<div class="container">
+
+  </div>
+<div class="container">
+  <br>
+  <table class="table" >
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">BLOOD GROUP</th>
+      <th scope="col">PHONE NUMBER</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">AGE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for g in group %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{g.name}}</td>
+      <td>{{g.email}}</td>
+      <td>{{g.blood}}</td>
+      <td>{{g.number}}</td>
+      <td>{{g.address}}</td>
+      <td>{{g.age}}</td>
+    </tr>
+  </tbody>
+
+    {%endfor%}
+</table>
+
+
+</div>
+
+
+{%endblock%}

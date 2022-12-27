@@ -1,0 +1,41 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Registration{% endblock%}
+{%block content%}
+<div class="container">
+    <br>
+    <form action="" method="POST">
+    {% if messages %}
+    {% for message in messages %}
+        <div>
+      <strong>{{message}}</strong>
+    </div>
+ {% endfor %}
+{% endif %}
+        {%csrf_token%}
+  <div class="mb-3">
+    <label for="" class="form-label">Card Number</label>
+    <input type="number" class="form-control"  aria-describedby="emailHelp" placeholder="Number" name="card">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Expiration</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="MM/YY" name="expire">
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">CVC</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="CVC" name="cvc">
+  </div>
+
+   <div class="col-md-3">
+      <label for="country" class="form-label">Country</label>
+      <select class="form-select" id="country" required name="country" >
+        <option value="">Select</option>
+        <option>Bangladesh</option>
+      </select>
+    </div>
+        <br>
+
+  <button type="submit" class="w-100 btn btn-primary btn-lg">PAY NOW</button>
+</form>
+</div>
+{%endblock%}

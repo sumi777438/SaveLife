@@ -1,0 +1,71 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+<!-- Footer -->
+
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <!-- Left -->
+
+    <!-- Right -->
+
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+        {% for doctor in specialdoctor%}
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <img src="{{doctor.picture.url}}"  width="300">
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+       <h4 >{{doctor.name}}</h4>
+            <p>
+                {{doctor.desp}}
+            </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+         <h4>{{doctor.workplace}}</h4>
+            <p>Total Expriance</p>
+            <p>{{doctor.exprience}}years</p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+         <h1>${{doctor.price}}</h1><strong>
+            <p>per consulation</p>
+            <a href="{% url 'edit' doctor.id %}"> <button type="submit" class="btn btn-primary btn-lg">Edit</button></a>
+             <a href="{% url 'delete' doctor.id %}"> <button type="submit" class="btn btn-danger btn-lg">Delete</button></a>
+
+        </div>
+
+      </div>
+      </div>
+        <!-- Grid column -->
+      </div>
+      {%endfor%}
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+
+
+{%endblock%}

@@ -1,0 +1,43 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+
+<div class="container">
+    <br>
+	<br>
+
+	<div class="row" id="ads">
+    <!-- Category Card -->
+     <h1 style="text-align:center;">Ambulance</h1>
+    {%for emer in emergency%}
+     <div class="col-md-3 mt-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <img class="img-fluid" src="{{emer.img.url}}" alt="Alternate Text" />
+            </div>
+            <div class="card-body">
+                <div class="ad-title m-auto">
+                    <h5 style="text-align:center;">{{emer.name}}</h5>
+                     <h6 style="text-align:center;">{{emer.car_number}}</h6>
+
+                </div>
+
+            <div class="card-body">
+
+                <div class="ad-title">
+                    <p> {{emer.description}}</p>
+                </div>
+                <a class="ad-btn" href="{%url 'ambulanceBooking'%}">Book Now</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+         {%endfor%}
+</div>
+
+{%endblock%}

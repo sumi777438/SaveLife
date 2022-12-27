@@ -1,0 +1,42 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Registration{% endblock%}
+{%block content%}
+
+<div class="container">
+    <form action="" method="POST">
+      {%csrf_token%}
+      <br>
+      <h1 style="text-align:center;">Booking</h1>
+      <h5 style="text-align:center; color:maroon;" >Doctor Name:{{book.name}}</h5>
+      <h6 style="text-align:center; color:maroon;">Visit: &{{book.price}}</h6>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Time</label>
+    <input type='time' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="time">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Date</label>
+    <input type="date" class="form-control" name="date" >
+  </div>
+     <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Name</label>
+    <input type="text" class="form-control"  name="name" >
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Price</label>
+    <input type="number" class="form-control" placeholder="" name="price">
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" >
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Number</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" name="number">
+  </div>
+
+  <a href=""><button type="submit" class="btn btn-primary">Submit</button></a>
+</form>
+
+</div>
+{%endblock%}

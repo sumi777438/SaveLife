@@ -1,0 +1,286 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: 1320px auto;
+    margin: 0 auto;
+}
+
+#spacilist{
+    margin-top: 50px;
+}
+
+#spacilist .main{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+#spacilist .item{
+
+
+    margin-left: 18px;
+
+}
+
+#spacilist .item ul{
+
+    display: flex;
+
+}
+
+#spacilist .item img{
+    width: 60%;
+    margin-top: 55px;
+}
+
+#spacilist .item p{
+    padding-top: 10px 0;
+
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-weight: 700;
+
+    padding-top: 20px;
+}
+
+#spacilist .last_child{
+    margin-top: 25px;
+}
+##############
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+
+
+ #appointment img{
+    height:150px;
+    width:100%;
+  }
+
+
+  div [class^="col-"]{
+    padding-left:5px;
+    padding-right:5px;
+  }
+
+  .card{
+    transition:0.5s;
+    cursor:pointer;
+  }
+
+  .card-title{
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+  }
+
+  .card-title i{
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    color:#ffa710
+  }
+  .card-title i:hover{
+    transform: scale(1.25) rotate(100deg);
+    color:#18d4ca;
+
+  }
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  .card-text{
+    height:80px;
+  }
+
+  .card::before, .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: rgba(255, 255, 255, 0.1);
+    content: '';
+    pointer-events: none;
+  }
+  .card::before {
+    transform-origin: left top;
+  }
+  .card::after {
+    transform-origin: right bottom;
+  }
+  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: scale3d(1, 1, 1);
+
+  }
+
+  #appointment .buttons{
+    display: flex;
+  }
+  #appointment ul li{
+    padding:5px;
+  }
+   #appointment .app ul li  a{
+    margin-left:5px;
+  }
+
+
+</style>
+<img src="{% static 'image/doctor.jpg'%} " width="100%" height="100%">
+
+<div class="container">
+    <br>
+	<br>
+
+	<div class="row" id="ads">
+    <!-- Category Card -->
+     <h1 style="text-align:center;">Pharmacy</h1>
+         {% for med in medicine%}
+     <div class="col-md-3 mt-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <img class="img-fluid" src="{{med.image.url}}" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+                <span class="card-detail-badge">${{med.price}}.00</span>
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                    <h5>{{med.name}}</h5>
+                </div>
+                <a class="ad-btn" href="{% url 'payment' med.id%}">Buy Now</a>
+            </div>
+        </div>
+    </div>
+        {%endfor%}
+
+
+</div>
+</div>
+
+<section id="spacilist">
+     <h1 style="text-align:center;" > Choose your Specialist</h1>
+    <br>
+<div class="container">
+    <div class="row">
+       <div class="main">
+
+    {%for sp in special%}
+        <div class="col-lg-4">
+            <div class="item border">
+                <ul>
+                    <li><a href="#"><img src="{{sp.pic.url}}" alt=""></a></li>
+                    <li><a href="{%url 'food'%}"> <p>{{sp.des}}</p> </a></li>
+                </ul>
+            </div>
+        </div>
+           {%endfor%}
+       </div>
+
+    </div>
+    </div>
+</div>
+
+</section>
+
+<section id="appointment">
+    <div class="container mt-2">
+        <h1 style="text-align:center; color:#FFBF00 ";>Appointment</h1>
+        <div class="row">
+            {%for doc in doctor%}
+          <div class="col-md-3 col-sm-6 mt-4">
+            <div class="card card-block">
+          <img src="{{doc.pic.url}}" alt="Photo of sunset">
+              <h5 class="card-title mt-3 mb-3" style="color:#6495ED">{{doc.type}}</h5>
+                <h3 class="card-title  ">{{doc.name}}</h3>
+               <h5 class="card-title  ">{{doc.hospital_name}}</h5>
+
+                <ul>
+                    <li class="app" ><a href="#">{{doc.profession}}</a></li>
+                    <li ><a href="#">{{doc.place}}</a></li>
+                    <li ><a href="#">${{doc.price}}</a></li>
+
+                </ul>
+
+               <div class="buttons">
+                <a href="{%url 'details' doc.id%}"> <button type="submit" class="btn bg-info btn-lg">View Profile</button></a>
+                  <a href="{%url 'appointment'%}"> <button type="submit" class="btn btn-primary btn-lg"  style="margin-left:5px;">Book Now</button></a>
+               </div>
+        </div>
+
+          </div>
+            {%endfor%}
+
+        </div>
+
+      </div>
+</section>
+
+<div class="container">
+    <br>
+	<br>
+
+	<div class="row" id="ads">
+    <!-- Category Card -->
+     <h1 style="text-align:center;">Ambulance</h1>
+    {%for emer in emergency%}
+     <div class="col-md-3 mt-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <img class="img-fluid" src="{{emer.img.url}}" alt="Alternate Text" />
+            </div>
+            <div class="card-body">
+                <div class="ad-title m-auto">
+                    <h5 style="text-align:center;">{{emer.name}}</h5>
+                     <h6 style="text-align:center;">{{emer.car_number}}</h6>
+
+                </div>
+
+            <div class="card-body">
+
+                <div class="ad-title">
+                    <p> {{emer.description}}</p>
+                </div>
+                <a class="ad-btn" href="{%url 'ambulanceBooking'%}">Book Now</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+         {%endfor%}
+</div>
+
+
+
+
+{%endblock%}

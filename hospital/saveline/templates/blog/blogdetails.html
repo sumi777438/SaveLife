@@ -1,0 +1,42 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Home{% endblock%}
+{%block content%}
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app img{
+ width:400px;
+}
+
+#app p{
+    padding-top: 5px;
+}
+
+</style>
+<section id="app">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <br>
+            <p style="color:blue;">{{detail.title}}</p>
+          <p style="text-align:justify;">{{detail.description}}</p>
+
+        </div>
+        <br>
+
+        <div class=" col-lg-4">
+        <br>
+            <img src="{{detail.pic.url}}" width="250" height="250" alt="">
+        </div>
+    </div>
+
+</div>
+
+</section>
+{%endblock%}

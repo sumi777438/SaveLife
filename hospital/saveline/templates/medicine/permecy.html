@@ -1,0 +1,37 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Pharmacy{% endblock%}
+{%block content%}
+
+<div class="container">
+    <br>
+	<br>
+
+	<div class="row" id="ads">
+    <!-- Category Card -->
+     <h1 style="text-align:center;">Pharmacy</h1>
+         {% for med in medicine%}
+     <div class="col-md-3 mt-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <img class="img-fluid" src="{{med.image.url}}" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+                <span class="card-detail-badge">${{med.price}}.00</span>
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                    <h5>{{med.name}}</h5>
+                </div>
+
+                <a class="ad-btn" href="{% url 'payment' med.id%}">Buy Now</a>
+            </div>
+        </div>
+    </div>
+        {%endfor%}
+
+
+</div>
+</div>
+
+{%endblock%}

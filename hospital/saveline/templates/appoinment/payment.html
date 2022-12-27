@@ -1,0 +1,32 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Registration{% endblock%}
+{%block content%}
+<div class="container">
+  <br>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">BOOKED DOCTOR</th>
+      <th scope="col">DATE</th>
+      <th scope="col">SLOT</th>
+      <th scope="col">FEES</th>
+      <th scope="col">PAY</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for d in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{d.name}}</td>
+      <td>{{d.date}}</td>
+      <td>{{d.time}}</td>
+      <td>{{d.price}}</td>
+      <td><a href="{%url 'confirm'%}"><button type="submit" class=" w-100 btn btn-primary">PAY</button></a></td>
+    </tr>
+  </tbody>
+    {%endfor%}
+</table>
+</div>
+{%endblock%}

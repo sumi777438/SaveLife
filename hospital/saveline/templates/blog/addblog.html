@@ -1,0 +1,44 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%} Add Blog{% endblock%}
+{%block content%}
+
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br>
+        <h1>Add Blog</h1>
+  <div class="form-group">
+    <label for="">Name</label>
+    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" name="name" value="" ><br>
+  </div>
+  <div class="form-group">
+    <label for="">Title</label>
+    <input type="text" class="form-control"  placeholder="Description" name="title" value=""><br>
+  </div>
+<div class="form-group">
+    <label for="">Text</label>
+    <input type="text" class="form-control"  placeholder="Working Place" value="" name="text"><br>
+  </div>
+  <div class="form-group">
+    <label for="">Description</label>
+    <input type="text" class="form-control"  placeholder="Experience" name="description" value=""><br>
+  </div>
+
+  <div class="form-group">
+      <label for="">Blog Profile</label>
+    <input type="file" class="form-control" name="image">
+    </div>
+<br>
+  <div class="form-group">
+      <label for="">Doctor Pic</label>
+    <input type="file" class="form-control" name="pic">
+    </div>
+    <br>
+        <button  type="submit" class="btn btn-primary">Save</button>
+
+</form>
+</div>
+
+
+{%endblock%}

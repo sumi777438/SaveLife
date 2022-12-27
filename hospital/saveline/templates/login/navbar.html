@@ -1,0 +1,60 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+     <div class="container">
+       <a class="navbar-brand" href="/">SaveLife</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="{%url 'specialisty'%}">Specialist</a>
+           </li>
+            <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="{%url 'permecy'%}">Pharmacy</a>
+           </li>
+             <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="{%url 'group'%}">Blood Bank</a>
+           </li>
+           </li>
+             <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="{%url 'blog'%}">Blog</a>
+           </li>
+
+
+         </ul>
+         <form class="d-flex" >
+           <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"  >
+           <button class="btn btn-warning" type="submit">S</button>
+         </form>
+         <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if user.is_authenticated %}
+           <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                DashBoard
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{%url 'docappoint'%}">Appointment</a></li>
+                <li><a class="dropdown-item" href="{%url 'ambulance'%}">Ambulance</a></li>
+                <li><a class="dropdown-item" href="{%url 'blood'%}">Blood Donate</a></li>
+                <li><a class="dropdown-item" href="{%url 'myappointment'%}">My Appointment</a></li>
+                <li><a href="{% url 'logout'%}" class="dropdown-item">logout</a></li>
+              </ul>
+            </li>
+              {%else%}
+                <li class="nav-item mx-2">
+                 <a href="{% url 'login'%}" class="nav-link text-white">Login</a>
+                </li>
+                <li class="nav-item mx-2">
+                 <a href="{% url 'Registration'%}" class="nav-link text-white">Registration</a>
+                </li>
+            {%endif%}
+          </ul>
+         </div>
+       </div>
+     </div>
+    </nav>

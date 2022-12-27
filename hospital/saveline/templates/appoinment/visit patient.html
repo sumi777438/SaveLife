@@ -1,0 +1,33 @@
+{% extends 'login/base.html'%}
+{%load static%}
+{%block title%}Visit Patient{% endblock%}
+{%block content%}
+<div class="container">
+  <br>
+  <h1 style="text-align:center; color:red;" >Patient Visit</h1>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">PATIENT NAME</th>
+      <th scope="col">DATE</th>
+      <th scope="col">SLOT</th>
+      <th scope="col">APPOINTMENT</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for d in visit %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{d.name}}</td>
+      <td>{{d.date}}</td>
+      <td>{{d.time}}</td>
+
+      <td><a href=""><button type="submit" class=" w-100 btn btn-warning">Start Video Call</button></a></td>
+    </tr>
+  </tbody>
+    {%endfor%}
+</table>
+</div>
+
+{%endblock%}
